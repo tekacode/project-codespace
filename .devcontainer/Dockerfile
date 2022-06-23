@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.236.0/containers/javascript-node
+{
+	"name": "JavaScript Project",
+	"build": {
+		"dockerfile": "Dockerfile",
+		// Update 'VARIANT' to pick a Node version: 18, 16, 14.
+		// Append -bullseye or -buster to pin to an OS version.
+		// Use -bullseye variants on local arm64/Apple Silicon.
+		"args": { "VARIANT": "16-bullseye" }
+	},
+	"settings": {
+		"terminal.integrated.profiles.linux":{
+			"zsh (login)": {
+			  "path": "zsh",
+			  "args": ["-l"]
+			}
+	},
+	"workbench.colorTheme": "codeSTACKr Theme"
+	},
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"CoenraadS.bracket-pair-colorizer",
+		"ritwickdey.LiveServer",
+		"esbenp.prettier-vscode",
+		"humao.rest-client",
+		"vscodevim.vim",
+		"enkia.tokyo-night",
+		"codestackr.codestackr-theme"
+	],
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"ms-vscode-remote.remote-containers"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	 "forwardPorts": [3000],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "npm install",
+	
+	"containerEnv": { "CHOKIDAR_USEPOLLING": "true" },
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	//"remoteUser": "teka"
+}
