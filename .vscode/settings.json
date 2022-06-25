@@ -1,0 +1,122 @@
+{
+  "editor.tabSize" : 2,
+  "editor.multiCursorModifier": "ctrlCmd",
+
+  "[javascript]" : {
+    "editor.defaultFormatter" : "vscode.typescript-language-features"
+  },
+  "emmet.showSuggestionsAsSnippets" : true,
+  "editor.suggestSelection" : "first",
+  "html.format.indentHandlebars" : true,
+  "emmet.excludeLanguages" : [
+    "markdown"
+  ],
+  "workbench.colorTheme": "Tomorrow Night Blue",
+  "vim.easymotion" : true,
+  "vim.sneak" : true,
+  "diffEditor.ignoreTrimWhitespace" : false,
+  "editor.minimap.enabled" : false,
+  "editor.quickSuggestionsDelay" : 12,
+  "vim.neovimUseConfigFile" : true,
+  "git.ignoreMissingGitWarning" : true,
+
+  "terminal.integrated.fontSize" : 18,
+  "editor.accessibilitySupport" : "off",
+  "debug.onTaskErrors" : "debugAnyway",
+  "editor.fontSize": 18,
+  "editor.accessibilityPageSize" : 18,
+  
+  "emmet.includeLanguages" : {
+    "javascript" : "javascriptreact",
+    "vue-html" : "html"
+  },
+  "terminal.integrated.fontFamily" : "MesloLGS NF",
+  "vim.normalModeKeyBindingsNonRecursive" : [
+    {
+      "after" : [
+        "<leader>",
+        "<leader>",
+        "s"
+      ],
+      "before" : [
+        "s"
+      ]
+    },
+    {
+      "after" : [
+        "<Esc>"
+      ],
+      "before" : [
+        "j",
+        "k"
+      ]
+    }
+  ],
+  "yaml.customTags" : [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "liveServer.settings.donotShowInfoMsg" : true,
+  "json.schemas" : [],
+  "editor.bracketPairColorization.enabled" : true,
+  "vim.enableNeovim" : true,
+
+  "vim.smartRelativeLine" : true,
+  "explorer.openEditors.visible" : 8,
+  "workbench.iconTheme" : "vs-seti",
+
+  "editor.formatOnSave" : true,
+  "files.exclude" : {
+    "**\/.project" : true,
+    "**\/.settings" : true,
+    "**\/.classpath" : true,
+    "**\/.factorypath" : true
+  },
+  "[dart]" : {
+    "editor.suggest.snippetsPreventQuickSuggestions" : false,
+    "editor.suggestSelection" : "first",
+    "editor.tabCompletion" : "onlySnippets",
+    "editor.wordBasedSuggestions" : false,
+    "editor.selectionHighlight" : false,
+    "editor.formatOnSave" : true,
+    "editor.formatOnType" : true,
+    "editor.rulers" : [
+      80
+    ]
+  },
+  "html.format.indentInnerHtml" : true,
+  "vim.vimrc.enable": true,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "breadcrumbs.enabled": false,
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.drawBoldTextInBrightColors": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+
+}

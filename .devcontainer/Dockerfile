@@ -1,54 +1,39 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.236.0/containers/javascript-node
-{
-	"name": "JavaScript Project",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick a Node version: 18, 16, 14.
-		// Append -bullseye or -buster to pin to an OS version.
-		// Use -bullseye variants on local arm64/Apple Silicon.
-		"args": { "VARIANT": "16-bullseye" }
-	},
-	"settings": {
-		"terminal.integrated.profiles.linux":{
-			"zsh (login)": {
-			  "path": "zsh",
-			  "args": ["-l"]
-			}
-	},
-	"workbench.colorTheme": "codeSTACKr Theme"
-	},
-	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"CoenraadS.bracket-pair-colorizer",
-		"ritwickdey.LiveServer",
-		"esbenp.prettier-vscode",
-		"humao.rest-client",
-		"vscodevim.vim",
-		"enkia.tokyo-night",
-		"codestackr.codestackr-theme"
-	],
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.236.0/containers/javascript-node/.devcontainer/base.Dockerfile
 
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"dbaeumer.vscode-eslint",
-				"ms-vscode-remote.remote-containers"
-			]
-		}
-	},
+# [Choice] Node.js version (use -bullseye variants on local arm64/Apple Silicon): 18, 16, 14, 18-bullseye, 16-bullseye, 14-bullseye, 18-buster, 16-buster, 14-buster
+ARG VARIANT="18-bullseye"
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	 "forwardPorts": [3000],
+ENV HOME /home/teka
+WORKDIR $HOME
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install",
-	
-	"containerEnv": { "CHOKIDAR_USEPOLLING": "true" },
+COPY settings.json /$HOME/.vscode/settings.json 
 
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	//"remoteUser": "teka"
-}
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "neovim"]
+RUN ["apt-get", "install", "-y", "vim"]
+RUN ["apt-get", "install", "-y", "vifm"]
+RUN echo "exec zsh" >> ~/.bashrc
+
+
+#COPY .vimrc /root/.vimrc
+COPY .zshrc /$HOME/.zshrc
+COPY .vimrc /$HOME/.config/nvim/init.vim
+COPY .vimrc /$HOME/.vimrc
+COPY plug.vim /$HOME/.vim/autoload/plug.vim
+COPY vifmrc /$HOME/.vifm/vifmrc
+
+# VSCode setting.json
+#COPY settings.json /root/.config/Code/User/settings.json
+#COPY settings.json /$HOME/.vscode/settings.json 
+
+# [Optional] Uncomment this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends <your-package-list-here>
+
+# [Optional] Uncomment if you want to install an additional version of node using nvm
+# ARG EXTRA_NODE_VERSION=10
+# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
+
+# [Optional] Uncomment if you want to install more global node modules
+# RUN su node -c "npm install -g <your-package-list-here>"
